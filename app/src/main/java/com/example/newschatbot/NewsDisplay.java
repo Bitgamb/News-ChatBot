@@ -17,6 +17,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.newschatbot.Model.Articles;
 import com.example.newschatbot.Model.Headlines;
+import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,8 +34,10 @@ public class NewsDisplay extends AppCompatActivity {
     EditText etQuery;
     Button btnSearch,btnAboutUs;
     Dialog dialog;
+    TabLayout tabLayout;
     final String API_KEY = "9290f2828b9f415289a6239ccb654f9f";
     Adapter adapter;
+    int condition;
     List<Articles>  articles = new ArrayList<>();
 
     @Override
@@ -45,6 +48,51 @@ public class NewsDisplay extends AppCompatActivity {
 
         swipeRefreshLayout = findViewById(R.id.srl);
         recyclerView = findViewById(R.id.recyclerView);
+        tabLayout = findViewById(R.id.include);
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                recyclerView.setBottom(tab.getPosition());
+                String category = "";
+                switch (tab.getPosition()) {
+                    case 0:
+                        category = "general";
+                        condition=0;
+                        break;
+                    case 1:
+                        category = "sports";
+                        condition=0;
+                        break;
+                    case 2:
+                        category = "health";
+                        condition=0;
+                        break;
+                    case 3:
+                        category = "science";
+                        condition=0;
+                        break;
+                    case 4:
+                        category = "entertainment";
+                        condition=0;
+                        break;
+                    case 5:
+                        category = "technology";
+                        condition=0;
+                        break;
+                    default:
+                        category = "general";
+
+                        break;
+                }
+                retrieveJson("",  category, API_KEY);
+            }
+        
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {}
+        
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {}
+        });
 
         etQuery = findViewById(R.id.etQuery);
         btnSearch = findViewById(R.id.btnSearch);
@@ -74,7 +122,8 @@ public class NewsDisplay extends AppCompatActivity {
                         }
                     });
                     retrieveJson(etQuery.getText().toString(),country,API_KEY);
-                }else{
+                }
+                else{
                     swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
                         @Override
                         public void onRefresh() {
@@ -100,15 +149,19 @@ public class NewsDisplay extends AppCompatActivity {
 
     }
 
-    public void retrieveJson(String query ,String country, String apiKey){
+    public void retrieveJson(String query ,String category, String apiKey){
 
 
         swipeRefreshLayout.setRefreshing(true);
         Call<Headlines> call;
         if (!etQuery.getText().toString().equals("")){
             call= ApiClient.getInstance().getApi().getSpecificData(query,apiKey);
-        }else{
-            call= ApiClient.getInstance().getApi().getHeadlines(country,apiKey);
+        } else if (condition==1) {
+            call= ApiClient.getInstance().getApi().getHeadlines(category,apiKey);
+
+        } else{
+
+            call= ApiClient.getInstance().getApi().getCategory(category,apiKey);
         }
 
         call.enqueue(new Callback<Headlines>() {

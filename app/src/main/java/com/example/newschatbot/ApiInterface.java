@@ -18,6 +18,11 @@ public interface ApiInterface {
     @GET("everything")
     Call<Headlines> getSpecificData(
             @Query("q") String query,
+            @Query("category") String category
+    );
+    @GET("top-headlines")
+    Call<Headlines> getCategory(
+            @Query("category") String category,
             @Query("apiKey") String apiKey
     );
 

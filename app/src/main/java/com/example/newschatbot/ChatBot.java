@@ -8,7 +8,6 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 
@@ -34,7 +33,7 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class MainActivity extends AppCompatActivity {
+public class ChatBot extends AppCompatActivity {
 
     RecyclerView recyclerView;
     EditText message_text_text;
@@ -49,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_chatbot);
 
         //====================================
         message_text_text = findViewById(R.id.message_text_text);
@@ -67,8 +66,8 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(messageAdapter);
         //====================================
 
-        if(!isConnected(MainActivity.this)) {
-            buildDialog(MainActivity.this).show();
+        if(!isConnected(ChatBot.this)) {
+            buildDialog(ChatBot.this).show();
         }
 
         message_text_text.addTextChangedListener(new TextWatcher() {
@@ -163,6 +162,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 } else {
                     addResponse("Failed to load response due to"+response.body().toString());
+
                 }
 
             }
