@@ -4,8 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
-    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -18,22 +17,26 @@
         android:theme="@style/Theme.Material3.Dark.NoActionBar"
         tools:targetApi="31">
         <activity
-            android:name=".Detailed"
+            android:name=".PaymentFailed"
             android:exported="false" />
         <activity
-            android:name=".CategorySelectActivity"
+            android:name=".PaymentReceipt"
+            android:exported="false" />
+        <activity
+            android:name=".PaymentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Detailed"
             android:exported="false" />
         <activity
             android:name=".NewsDisplay"
             android:exported="false" />
         <activity
             android:name=".Chat"
-            android:exported="false"
-            />
+            android:exported="false" />
         <activity
             android:name=".SplashScreen"
-            android:exported="true"
-            >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -42,33 +45,26 @@
         </activity>
         <activity
             android:name=".SuccessfulLoginAnim"
-            android:exported="false"
-             />
+            android:exported="false" />
         <activity
             android:name=".ForgotPasswordActivity"
-            android:exported="false"
-             />
-        <activity
-            android:name=".CategorySelectionActivity"
             android:exported="false" />
         <activity
             android:name=".OTP"
-            android:exported="false"
-            />
+            android:exported="false" />
         <activity
             android:name=".Register"
-            android:exported="false"
-             />
+            android:exported="false" />
         <activity
             android:name=".Login"
-            android:exported="true"
-             />
+            android:exported="true" />
         <activity
-            android:name=".ChatBot"
-            android:exported="true"
-            
+            android:name=".MainActivity"
+            android:exported="true" />
 
-            />
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-3940256099942544~3347511713" />
     </application>
 
 </manifest>

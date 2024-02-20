@@ -23,17 +23,4 @@
     <color name="gpt_bg_color">#0EA47E</color>
     <color name="gray">#2d2d2d</color>
     <color name="grey">#2d2d2d</color>
-
-    <color name="color2">#0078d7</color>
-
-
-
-    <color name="colorDot">#e84a5f</color>
-    <color name="colorGrey">#dddddd</color>
-    <color name="colorCardBackground">@color/colorGrey</color>
-    <color name="colorDarkerGrey">#979797</color>
-    <color name="colorBlack">@android:color/black</color>
-    <color name="colorTextDark">@color/colorBlack</color>
-
-
 </resources>

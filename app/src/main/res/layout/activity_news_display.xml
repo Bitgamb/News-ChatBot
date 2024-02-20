@@ -38,7 +38,15 @@
 
 
     </LinearLayout>
-
+    <com.google.android.gms.ads.AdView
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        ads:adSize="BANNER"
+        ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
+    </com.google.android.gms.ads.AdView>
 
 
     <GridLayout
@@ -67,7 +75,6 @@
             android:layout_row="0"
             android:inputType="textPersonName" />
 
-
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnSearch"
             android:layout_width="wrap_content"
@@ -81,66 +88,8 @@
             android:layout_row="0" />
 
 
-
-
     </GridLayout>
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/include"
-        android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:layout_below="@id/recyclerView"
-        android:layout_marginTop="0dp"
-        android:background="@color/black"
-        app:tabIndicatorHeight="3.5dp"
-        app:tabMode="scrollable"
-        app:tabSelectedTextColor="#03A9F4"
 
-        app:tabTextColor="@color/white">
-
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/home"
-            android:layout_width="wrap_content"
-            android:layout_height="20dp"
-            android:text="Home"
-            />
-
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/sports"
-            android:layout_width="wrap_content"
-            android:layout_height="20dp"
-            android:text="Sports" />
-
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/healths"
-            android:layout_width="wrap_content"
-            android:layout_height="20dp"
-            android:text="Healths" />
-
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/science"
-            android:layout_width="wrap_content"
-            android:layout_height="20dp"
-            android:text="Science" />
-
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/Entertainment"
-            android:layout_width="wrap_content"
-            android:layout_height="20dp"
-            android:text="Entertainment" />
-
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/technology"
-            android:layout_width="wrap_content"
-            android:layout_height="20dp"
-            android:text="Technology" />
-
-    </com.google.android.material.tabs.TabLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="5dp"
-        android:id="@+id/recyclerView"/>
 
 
 
@@ -149,6 +98,11 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent" >
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:id="@+id/recyclerView"/>
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
